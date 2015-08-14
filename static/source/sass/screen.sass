@@ -1,0 +1,918 @@
+@import "compass"
+@import "compass/css3"
+@import "compass/layout"
+
+@import url("http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900")
++font-face("socicon", font-files("socicon.woff", "socicon.woff2", "socicon.ttf", "socicon.svg"), "socicon.eot", normal, normal)
+
+$sans: "Roboto", sans-serif
+$light: 300
+$normal: 400
+$regular: $normal
+$medium: 500
+$bold: 700
+$black: 900
+
+$blue: #06f
+$green: #090
+$yellow: #fc0
+$gray-lighter: #ccc
+$gray-light: #999
+$gray: #666
+$gray-dark: #333
+$ice: #fbfbfb
+
+$speed: .3s
+$cols: 12
+$gutter: 10px
+$max: 960px
+
+=col($number: 1, $parent: $cols)
+	$width: (100% / $parent * $number)
+	$padding: percentage($gutter / ($max * $parent / $cols))
+	padding-left: $padding
+	padding-right: $padding
+	width: $width
+
+=breakpoint($point)
+	@if ($point == "retina")
+		@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+			@content
+
+=use-sprite($sprite)
+	$sprites: sprite-map("sprites/*.png", $layout: smart)
+	$retina: sprite-map("retina/*.png", $layout: smart)
+	background: sprite($sprites, $sprite)
+	height: image-height(sprite-file($sprites, $sprite))
+	width: image-width(sprite-file($sprites, $sprite))
+	+breakpoint("retina")
+		background-image: sprite-url($retina)
+		background-size: (image-width(sprite-path($retina)) / 2) (image-height(sprite-path($retina)) / 2)
+		background-position: round(nth(sprite-position($retina, $sprite), 1) / 2) round(nth(sprite-position($retina, $sprite), 2) / 2)
+		height: image-height(sprite-file($retina, $sprite)) / 2
+		width: image-width(sprite-file($retina, $sprite)) / 2
+
+=fade-out
+	opacity: 0
+	visibility: hidden
+	+transition(visibility 0 $speed, opacity $speed linear)
+
+=fade-in
+	opacity: 1
+	visibility: visible
+	+transition(opacity $speed linear)
+
+@function img($filename)
+	@return generated-image-url($filename)
+
+@function col($number: 1, $parent: $cols)
+	@return (100% / $parent * $number)
+
+@function gutter($parent: $cols)
+	@return percentage($gutter / ($max * $parent / $cols))
+
+*
+	margin: 0
+	padding: 0
+	+box-sizing(border-box)
+html,
+body
+	height: 100%
+body
+	color: $gray-dark
+	font: 20px/30px sans-serif
+hr
+	display: none
+img
+	border: 0 none
+	height: auto
+	max-width: 100%
+	vertical-align: baseline
+label
+	cursor: pointer
+address
+	font: inherit
+ul,
+ol
+	list-style: none
+button,
+input[type="button"],
+input[type="submit"]
+	+appearance(none)
+	cursor: pointer
+a
+	color: $green
+	text-decoration: none
+
+// Global
+
+.cf
+	+pie-clearfix
+.wrap
+	@extend .cf
+	+box-sizing(content-box)
+	border-left: $gutter solid transparent
+	border-right: $gutter solid transparent
+	margin: 0 auto
+	max-width: $max
+	position: relative
+.row
+	padding-top: 80px
+	padding-bottom: 80px
+	+ .row
+		padding-top: 0
+.cover
+	background-position: center center
+	+background-size(cover)
+.btn
+	background: $green
+	color: #fff
+	display: inline-block
+	font: $medium 18px/24px $sans
+	padding: 9px 15px
+	text-transform: uppercase
+	// +text-shadow(0 2px 0 rgba(#000,.35))
+	&.blue
+		background: $blue
+		// +text-shadow(none)
+.h1
+	color: $green
+	font: $black 15px/30px $sans
+	margin: 0 gutter() 40px
+	text-transform: uppercase
+	&:before
+		color: $yellow
+		content: "// "
+		font: inherit
+.h2
+	font: $light 42px/54px $sans
+	margin: 0 0 40px
+	text-transform: none
+.h3
+	color: $gray
+	font: $light 25px/1 $sans
+	margin-bottom: 12px
+	small
+		color: $green
+		display: block
+		font: $black 13px/17px $sans
+		text-transform: uppercase
+.h4
+	color: $green
+	font: $light 42px/1.2 $sans
+	margin: 0 gutter() 30px
+	small
+		color: $gray
+		display: block
+		font-size: 22px
+		text-transform: uppercase
+
+// Icons
+
+.icon
+	position: relative
+	top: 1px
+	display: inline-block
+	-webkit-font-smoothing: antialiased
+	+squish-text
+	+ .icon
+		margin-left: 10px
+	&:empty
+		width: 1em
+	&:before
+		color: $yellow
+		font-size: 20px
+		font-family: "socicon"
+		font-style: normal
+		font-weight: normal
+		line-height: 1
+	&.twitter:before
+		content: "a"
+	&.facebook:before
+		content: "b"
+	&.google:before
+		content: "c"
+	&.pinterest:before
+		content: "d"
+	&.foursquare:before
+		content: "e"
+	&.yahoo:before
+		content: "f"
+	&.skype:before
+		content: "g"
+	&.yelp:before
+		content: "h"
+	&.feedburner:before
+		content: "i"
+	&.linkedin:before
+		content: "j"
+	&.viadeo:before
+		content: "k"
+	&.xing:before
+		content: "l"
+	&.myspace:before
+		content: "m"
+	&.soundcloud:before
+		content: "n"
+	&.spotify:before
+		content: "o"
+	&.grooveshark:before
+		content: "p"
+	&.lastfm:before
+		content: "q"
+	&.youtube:before
+		content: "r"
+	&.vimeo:before
+		content: "s"
+	&.dailymotion:before
+		content: "t"
+	&.vine:before
+		content: "u"
+	&.flickr:before
+		content: "v"
+	// &.500px:before
+	// 	content: "w"
+	&.instagram:before
+		content: "x"
+	&.wordpress:before
+		content: "y"
+	&.tumblr:before
+		content: "z"
+	&.blogger:before
+		content: "A"
+	&.technorati:before
+		content: "B"
+	&.reddit:before
+		content: "C"
+	&.dribbble:before
+		content: "D"
+	&.stumbleupon:before
+		content: "E"
+	&.digg:before
+		content: "F"
+	&.envato:before
+		content: "G"
+	&.behance:before
+		content: "H"
+	&.delicious:before
+		content: "I"
+	&.deviantart:before
+		content: "J"
+	&.forrst:before
+		content: "K"
+	&.playstore:before
+		content: "L"
+	&.zerply:before
+		content: "M"
+	&.wikipedia:before
+		content: "N"
+	&.apple:before
+		content: "O"
+	&.flattr:before
+		content: "P"
+	&.github:before
+		content: "Q"
+	&.chimein:before
+		content: "R"
+	&.friendfeed:before
+		content: "S"
+	&.newsvine:before
+		content: "T"
+	&.identica:before
+		content: "U"
+	&.bebo:before
+		content: "V"
+	&.zynga:before
+		content: "W"
+	&.steam:before
+		content: "X"
+	&.xbox:before
+		content: "Y"
+	&.windows:before
+		content: "Z"
+	&.outlook:before
+		content: "1"
+	&.coderwall:before
+		content: "2"
+	&.tripadvisor:before
+		content: "3"
+	&.appnet:before
+		content: "4"
+	&.goodreads:before
+		content: "5"
+	&.tripit:before
+		content: "6"
+	&.lanyrd:before
+		content: "7"
+	&.slideshare:before
+		content: "8"
+	&.buffer:before
+		content: "9"
+	&.rss:before
+		content: ","
+	&.vkontakte:before
+		content: ";"
+	&.disqus:before
+		content: ":"
+	&.houzz:before
+		content: "+"
+	&.mail:before
+		content: "@"
+	&.patreon:before
+		content: "="
+	&.paypal:before
+		content: "-"
+	&.playstation:before
+		content: "^"
+	&.smugmug:before
+		content: "¨"
+	&.swarm:before
+		content: "$"
+	&.triplej:before
+		content: "*"
+	&.yammer:before
+		content: "&"
+	&.stackoverflow:before
+		content: "("
+	&.drupal:before
+		content: "#"
+	&.odnoklassniki:before
+		content : "."
+	&.android:before
+		content: "_"
+	&.meetup:before
+		content: "]"
+	&.persona:before
+		content: ")"
+	&.amazon:before
+		content: "£"
+	&.ello:before
+		content: "'"
+	&.mixcloud:before
+		content: '"'
+	// &.8tracks:before
+	// 	content: "}"
+	&.twitch:before
+		content: "{"
+	&.airbnb:before
+		content: "/"
+	&.airbnb:before
+		content: "?"
+
+// Header
+
+.head
+	background: #fff
+	border-top: 1px solid $gray-lighter
+	border-bottom: 1px solid $gray-lighter
+	height: 80px
+	left: 0
+	position: fixed
+	right: 0
+	top: 0
+	z-index: 10
+	.social
+		position: absolute
+		right: gutter()
+		top: 50%
+		+translateY(-50%)
+	.admin-bar &
+		margin-top: 32px
+.main
+	padding-top: 80px
+.logo,
+.logo a
+	+squish-text
+	+use-sprite("logo")
+.logo
+	left: gutter()
+	position: absolute
+	top: 50%
+	+translateY(-50%)
+	img
+		display: none
+.logo a
+	background: none
+	display: block
+.nav
+	margin: 0 170px 0 193px
+.menu
+	display: table
+	height: (80px - 2)
+	width: 100%
+.menu-item
+	display: table-cell
+	font: $light 20px/78px $sans
+	text-align: center
+	text-transform: uppercase
+	vertical-align: middle
+	a
+		color: $gray
+		display: block
+		&:hover, &:focus, &:active
+			background: $ice
+.current-menu-item a
+	background: $ice
+
+// Footer
+
+.foot
+	background: $green
+	clear: both
+	color: #fff
+	font: $light 15px/24px $sans
+	padding: 30px 0
+	text-align: center
+	.email
+		border-bottom: 1px dotted rgba(#fff,.5)
+		color: #fff
+	.org
+		+use-sprite("logo-w")
+		display: block
+		left: gutter()
+		position: absolute
+		top: 5px
+		+squish-text
+	.social
+		position: absolute
+		right: gutter()
+		top: 12px
+	a:before
+		color: #fff
+
+// Jumbotron
+
+.jumbotron
+	color: #fff
+	font-family: $sans
+	min-height: 656px
+	position: relative
+	z-index: 20
+	.content
+		+col(4.5)
+	p + p
+		margin-top: 80px
+	.social
+		position: absolute
+		right: col()
+		top: 50px
+		a:before
+			color: #fff
+
+// Welcome
+
+.quotes
+	height: 527px
+	overflow: hidden
+.welcome
+	@extend .quotes
+	color: #fff
+	font: $light 25px/35px $sans
+	// height: 656px
+	position: relative
+	.wrap
+		@extend .quotes
+	.content
+		+col(9)
+		left: 0
+		position: absolute
+		top: 50%
+		+translateY(-50%)
+	.big
+		font-size: 32px
+		line-height: 40px
+	p + p
+		margin-top: 40px
+	blockquote,
+	blockquote.content
+		font: $light 30px/40px $sans
+		padding-right: col(2) + gutter()
+		.footer
+			font-size: 25px
+			line-height: 1.2em
+			margin-top: 40px
+		small
+			display: block
+			font-size: 15px
+			line-height: 1.2em
+			text-transform: uppercase
+
+// Complement
+
+.complement
+	.wrap
+		min-height: 594px
+	.image
+		bottom: 0
+		padding-left: (gutter() * 2)
+		position: absolute
+		right: 0
+		width: col(7)
+	.content
+		+col(5)
+		color: $gray
+		float: left
+		font: $light 22px/30px $sans
+		padding-top: 120px
+		padding-bottom: 120px
+	p + p
+		margin-top: 30px
+
+// Banners
+
+.banners
+	@extend .cf
+	clear: both
+	margin-top: -70px
+	// margin-bottom: 80px
+	position: relative
+.banners-item
+	+col(6)
+	float: left
+	a
+		background-color: $yellow
+		background-position: col(.5,6) center
+		background-repeat: no-repeat
+		color: #fff
+		display: block
+		font: $bold 20px/25px $sans
+		padding: 33px col(.5,6) 33px col(1.8,6)
+
+// Cases
+
+.cases
+	.more
+		color: $gray-light
+		font: $medium 15px/20px $sans
+		margin-top: 55px
+		text-align: center
+		text-transform: uppercase
+		span
+			display: inline-block
+			margin-right: 5px
+			text-align: right
+			vertical-align: middle
+.cases-list
+	@extend .cf
+.cases-item
+	float: left
+	margin-bottom: ($gutter * 2)
+	position: relative
+	text-align: center
+	+col(4)
+	&:before
+		content: ""
+		display: block
+		padding-top: 100%
+	a
+		color: transparent
+		display: block
+		+stretch(0, gutter(4), 0, gutter(4))
+		+transition(color $speed)
+		&:before
+			background: rgba($yellow,.9)
+			content: ""
+			display: block
+			opacity: 0
+			+stretch
+			+transition(opacity $speed)
+		&:hover, &:focus, &:active
+			color: #fff
+			&:before
+				opacity: 1
+	.content
+		+stretch-x
+		font: $light 46px/42px $sans
+		text-transform: uppercase
+		top: 50%
+		+translateY(-50%)
+	strong
+		display: block
+		font: $black 17px/25px $sans
+
+// Features
+
+.features
+	background-color: #e5e5e5
+	color: $gray-dark
+	font: $light 12px/16px $sans
+	text-transform: uppercase
+	.page-template-sobre &
+		margin-bottom: 80px
+	.wrap
+		min-height: 594px
+		.page-template-sobre &
+			min-height: 0
+	.content
+		+col(7)
+		float: left
+	.image
+		bottom: 0
+		padding-left: (gutter() * 2)
+		position: absolute
+		right: 0
+		width: col(5)
+	img
+		display: block
+		margin: 0 auto
+	li
+		font: $normal 16px/24px $sans
+		.page-template-sobre &
+			color: $gray
+			font-size: 20px
+			line-height: 30px
+			text-transform: none
+		&:before
+			color: $blue
+			content: "|| "
+			font: inherit
+			.page-template-sobre &
+				color: $gray
+				content: "• "
+	p
+		margin-top: 30px
+	.more
+		margin-top: 15px
+
+// Partners
+
+.partners-list
+	display: table
+	+col(12)
+.partners-item
+	display: table-cell
+	vertical-align: middle
+	img
+		display: block
+		margin: 0 auto
+
+// Location
+
+.location
+	.content
+		background: #fff
+		font: $light 20px/25px $sans
+		margin-top: -420px
+		padding: 40px 30px 30px
+		position: absolute
+		right: col()
+		width: 380px
+		z-index: 5
+		+box-shadow(0 7px 7px 0 rgba(#000,.3))
+		p
+			font: $light 12px/20px $sans
+			margin-top: 25px
+			text-transform: uppercase
+.map
+	background: $gray-lighter
+	border-top: 10px solid $green
+	border-bottom: 2px solid $green
+	height: 490px
+
+// What we do
+
+.work
+	color: $gray
+	p
+		margin: 0 col(.5) 80px
+		text-align: center
+.board-wrap
+	@extend .cf
+	+col(12)
+.board-item
+	background-color: $green
+	border: 1px solid #fff
+	float: left
+	position: relative
+	width: 50%
+	&:before
+		content: ""
+		display: block
+		padding-top: 100%
+	&:nth-child(n+3)
+		background-color: $yellow
+		float: right
+	.content
+		+stretch-x
+		color: #fff
+		font: $bold 18px/24px $sans
+		text-align: center
+		text-transform: uppercase
+		top: 50%
+		+translateY(-50%)
+	li + li
+		margin-top: 10px
+	small
+		display: block
+		font: $bold 12px/16px $sans
+
+// Team
+
+.team-list
+	font: 0/0 sans-serif
+	text-align: center
+.team-item
+	+col(4)
+	display: inline-block
+	font: $normal 13px/18px $sans
+	margin-bottom: 80px
+	min-width: 200px
+	img
+		border: 4px solid $green
+		border-radius: 50%
+		display: block
+		margin: 0 auto 30px
+	.footer
+		color: $green
+		&:before
+			background: #ececec
+			content: ""
+			display: block
+			height: 1px
+			margin: 0 auto 12px
+			width: 70px
+
+// Brands
+
+.brands-list
+	@extend .cf
+	+col(12)
+	font: 0/0 sans-serif
+	text-align: center
+.brands-item
+	display: inline-block
+	position: relative
+	width: col(3)
+	&:before
+		content: ""
+		display: block
+		padding-top: 100%
+	img
+		display: block
+		left: 50%
+		position: absolute
+		top: 50%
+		+translate(-50%, -50%)
+
+// Article
+
+.thumbnail.cover
+	max-height: 476px
+	overflow: hidden
+	img
+		display: block
+		height: auto
+		width: 100%
+		visibility: hidden
+.entry
+	color: $gray
+	.content
+		+col(8)
+		float: left
+		font: $light 22px/30px $sans
+		padding: 0 (col()) 0 gutter()
+		width: col(8)
+		+box-shadow(inset -2px 0 0 0 $yellow)
+		p + p
+			margin-top: 30px
+	.meta
+		+col(4)
+		float: left
+		font: $light 15px/20px $sans
+		padding: 7px (gutter() * 3)
+		text-transform: uppercase
+		width: col(4)
+		+box-shadow(-2px 0 0 0 $yellow)
+		p + p
+			margin-top: 20px
+.masonry
+	clear: both
+	padding-top: 80px
+.grid
+	@extend .cf
+	margin: 0 gutter() 80px
+.grid-item,
+.grid-sizer
+	width: (100% / 7)
+.grid-item
+	@extend .cover
+	float: left
+	position: relative
+	+box-shadow(inset 0 0 0 5px #fff)
+	&:before
+		content: ""
+		display: block
+		padding-top: 100%
+	&.h2x:before
+		padding-top: 200%
+	&.h3x:before
+		padding-top: 300%
+	&.h4x:before
+		padding-top: 400%
+	&.w2x
+		width: (100% / 7) * 2
+		&:before
+			padding-top: (100% / 2) * 1
+		&.h2x:before
+			padding-top: (100% / 2) * 2
+		&.h3x:before
+			padding-top: (100% / 2) * 3
+		&.h4x:before
+			padding-top: (100% / 2) * 4
+	&.w3x
+		width: (100% / 7) * 3
+		&:before
+			padding-top: (100% / 3) * 1
+		&.h2x:before
+			padding-top: (100% / 3) * 2
+		&.h3x:before
+			padding-top: (100% / 3) * 3
+		&.h4x:before
+			padding-top: (100% / 3) * 4
+	&.w4x
+		width: (100% / 7) * 4
+		&:before
+			padding-top: (100% / 4) * 1
+		&.h2x:before
+			padding-top: (100% / 4) * 2
+		&.h3x:before
+			padding-top: (100% / 4) * 3
+		&.h4x:before
+			padding-top: (100% / 4) * 4
+	a
+		display: block
+		+stretch
+	img
+		visibility: hidden
+.navigation
+	border-top: 4px solid $ice
+	margin: 0 gutter()
+	padding-top: 40px
+	position: relative
+	text-align: center
+	text-transform: uppercase
+	.prev, .next
+		display: inline
+		a
+			color: $green
+			display: block
+			font: $black 15px/17px $sans
+			position: absolute
+			top: 37px
+			width: 35%
+			&:before
+				color: $gray-light
+				display: block
+				font-size: 10px
+			&:after
+				border-radius: 4px
+				content: ""
+				display: block
+				height: 28px
+				// margin-top: -5px
+				position: absolute
+				top: 50%
+				width: 28px
+				+transform(translateY(-50%) rotate(45deg))
+	.prev a
+		left: 5px
+		padding-left: 30px
+		text-align: left
+		&:before
+			content: "Case anterior:"
+		&:after
+			left: 0
+			border-left: 4px solid $gray-light
+			border-bottom: 4px solid $gray-light
+	.next a
+		right: 5px
+		padding-right: 30px
+		text-align: right
+		&:before
+			content: "Próximo case:"
+		&:after
+			right: 0
+			border-right: 4px solid $gray-light
+			border-top: 4px solid $gray-light
+	.all
+		color: $gray-light
+		display: inline-block
+		font: $black 11px/14px $sans
+		padding: 1px 0 1px 35px
+		position: relative
+		text-align: left
+		&:before
+			+background(linear-gradient(to bottom, transparent 11px, $gray-light 11px, $gray-light 13px, transparent 13px), linear-gradient(to right, transparent 11px, $gray-light 11px, $gray-light 13px, transparent 13px))
+			border: 2px solid $gray-light
+			border-radius: 3px
+			content: ""
+			display: block
+			height: 24px
+			left: 0
+			position: absolute
+			top: 0
+			width: 24px
+
+//
+
+@import "slick"

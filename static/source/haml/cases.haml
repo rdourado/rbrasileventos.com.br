@@ -1,0 +1,59 @@
+!!!
+%html{:lang => "pt-br"}
+	%head
+		%meta{:charset => "UTF-8"}/
+		%title Cases | R Brasil Eventos
+		%link{:rel => "stylesheet", :href => "css/screen.css"}/
+	%body.archive
+		%header.head{:role => "banner"}
+			.wrap
+				%h1.logo<
+					%a{:href => "#"} R Brasil Eventos
+				%nav.nav{:role => "navigation"}
+					%ul.menu
+						%li.menu-item<
+							%a{:href => "sobre.html"} Sobre
+						%li.menu-item<
+							%a{:href => "cases.html"} Cases
+						%li.menu-item<
+							%a{:href => "marcas.html"} Marcas
+						%li.menu-item<
+							%a{:href => "#"} Clientes
+						%li.menu-item<
+							%a{:href => "#"} Contato
+					.social
+						%a.icon.facebook{:href => "#", :target => "_blank"} Facebook
+						%a.icon.instagram{:href => "#", :target => "_blank"} Instagram
+						%a.icon.youtube{:href => "#", :target => "_blank"} Youtube
+		%hr/
+		%main.main{:role => "main"}
+			.cases.wrap.row
+				%h2.h1 Confira nossos últimos cases de sucesso
+				%ul.cases-list
+					- 9.times do |o|
+						%li.cases-item
+							%a{:href => "case.html", :style => "background-image: url(http://dummyimage.com/300x300)"}
+								.content
+									%strong Schin
+									Viva a Tubaína!
+				.more
+					%a.btn.green{:href => "#"} Carregar mais cases
+		%hr/
+		%footer.foot{:role => "contentinfo"}
+			.wrap
+				%address.vcard
+					%span.fn.org R Brasil Eventos
+					%span.adr
+						%span.street-address Leandro Dupret, 54
+						\- Vila Clementino -
+						%span.locality São Paulo
+						\-
+						%span.region SP
+					%br/
+					%span.tel (011) 2308-5158
+					2309-5158
+					%a.email{:href => "mailto:contato@rbrasileventos.com.br"} contato@rbrasileventos.com.br
+				.social
+					%a.icon.facebook{:href => "#", :target => "_blank"} Facebook
+					%a.icon.instagram{:href => "#", :target => "_blank"} Instagram
+					%a.icon.youtube{:href => "#", :target => "_blank"} Youtube

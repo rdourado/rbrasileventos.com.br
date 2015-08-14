@@ -1,0 +1,132 @@
+!!!
+%html{:lang => "pt-br"}
+	%head
+		%meta{:charset => "UTF-8"}/
+		%title Sobre | RBrasil Eventos
+		%link{:rel => "stylesheet", :href => "css/screen.css"}/
+	%body.page-sobre
+		%header.head{:role => "banner"}
+			.wrap
+				%h1.logo<
+					%a{:href => "index.html"} R Brasil Eventos
+				%nav.nav{:role => "navigation"}
+					%ul.menu
+						%li.menu-item<
+							%a{:href => "sobre.html"} Sobre
+						%li.menu-item<
+							%a{:href => "cases.html"} Cases
+						%li.menu-item<
+							%a{:href => "marcas.html"} Marcas
+						%li.menu-item<
+							%a{:href => "#"} Clientes
+						%li.menu-item<
+							%a{:href => "#"} Contato
+					.social
+						%a.icon.facebook{:href => "#", :target => "_blank"} Facebook
+						%a.icon.instagram{:href => "#", :target => "_blank"} Instagram
+						%a.icon.youtube{:href => "#", :target => "_blank"} Youtube
+		%hr/
+		%main.main{:role => "main"}
+			.welcome.cover{:style => "background-image: url(img/party.jpg)"}
+				.wrap
+					.content
+						%p.big Com 6 anos de experiência, somos mais que uma agência de eventos. Trazemos em nossa bagagem soluções inovadoras em eventos.
+						%p A RBRASIL EVENTOS está presente nos principais eventos do Brasil na contratação de toda a mãe de obra terceirizada necessária para feiras, eventos, ações de marketing, ativações, etc.
+			.complement.cover{:style => "background-image: url(img/room.jpg)"}
+				.wrap
+					.image
+						%img{:src => "img/women.png", :alt => ""}/
+					.content
+						%p Nosso principal objetivo é garantir o sucesso e tranquilidade do seu evento.
+						%p Com total infraestrutura, preços competetitivos e uma equipe devidamente qualificada garantimos o acompanhamento e chegada de todos os contratados. Disponibilizamos coordenadores que atendem 24 horas até o término da ação.
+			.banners.wrap
+				%ul.banners-list
+					%li.banners-item
+						%a{:href => "#", :style => "background-image: url(img/lightbulb.png)"}<
+							Conheças as agências de publicidade que acreditam em nosso trabalho.
+					%li.banners-item
+						%a{:href => "#", :style => "background-image: url(img/speaker.png)"}<
+							Ao longo do tempo nossa carta de marcas vem só aumentando.
+			.work.wrap.row
+				%h2.h1 O que fazemos
+				%p Ao longo dos anos, fomos percebendo a necessidade de agregar outros serviços em nosso portfólio com a mesma qualidade. Com o objetivo de otimizar o trabalho da produção, investimos na captação e cadastramento de profissionais de todas as áreas, assim nossos clientes conseguem centralizar todos os itens de mão de obra com apenas um fornecedor altamente qualificado e nós ficamos com um poder de negociação maior.
+				.board-wrap
+					.board-item
+						%ul.content
+							%li Supervisores,
+							%li Coordenadores,
+							%li Produtores,
+							%li Apoio de produção,
+							%li Carregadores,
+							%li<
+								Vigilantes e seguranças
+								%small com certificado da polícia federal
+					.board-item.cover{:style => "background-image: url(img/monotone1.jpg)"}
+					.board-item
+						%ul.content
+							%li Agentes de limpeza
+							%li Copeiras
+							%li Maquiadores
+							%li Massoterapeutas
+							%li Fotógrafos
+							%li Uniformes
+							%li Brigadistas
+					.board-item.cover{:style => "background-image: url(img/monotone2.jpg)"}
+			.team.wrap
+				%h2.h1 Nossa equipe
+				%ul.team-list
+					- 8.times do |o|
+						%li.team-item
+							%img{:src => "http://dummyimage.com/224x224", :alt => "", :width => "224", :height => "224"}/
+							%h3.h3
+								%small Cargo
+								Juliana Russo
+							%p.footer<
+								julianarusso@rbrasileventos.com.br
+								%br>
+								11 98765 3456
+			.location
+				.wrap
+					%h2.h1 Onde nos encontrar
+				.map
+				.content
+					%address.vcard
+						%span.fn.org RBrasil Eventos
+						%br/
+						%span.adr
+							%span.street-address Leandro Dupret, 54
+							\-
+							%br/
+							Vila Clementino -
+							%span.locality São Paulo
+							%span.region SP
+						%br/
+						%br/
+						%span.tel (011) 2308-5158
+						%br/
+						%span.tel (011) 2309-5158
+						%br/
+						%br/
+						%a.email{:href => "mailto:contato@rbrasileventos.com.br"} contato@rbrasileventos.com.br
+					%p<
+						Ou se você preferir,
+						%a.btn.green{:href => "#"} Fale com nosso atendimento
+		%hr/
+		%footer.foot{:role => "contentinfo"}
+			.wrap
+				%address.vcard
+					%span.fn.org RBrasil Eventos
+					%span.adr
+						%span.street-address Leandro Dupret, 54
+						\- Vila Clementino -
+						%span.locality São Paulo
+						\-
+						%span.region SP
+					%br/
+					%span.tel (011) 2308-5158
+					2309-5158
+					%a.email{:href => "mailto:contato@rbrasileventos.com.br"} contato@rbrasileventos.com.br
+				.social
+					%a.icon.facebook{:href => "#", :target => "_blank"} Facebook
+					%a.icon.instagram{:href => "#", :target => "_blank"} Instagram
+					%a.icon.youtube{:href => "#", :target => "_blank"} Youtube

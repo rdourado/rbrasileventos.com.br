@@ -1,0 +1,122 @@
+!!!
+%html{:lang => "pt-br"}
+	%head
+		%meta{:charset => "UTF-8"}/
+		%title R Brasil Eventos
+		%link{:rel => "stylesheet", :href => "css/screen.css"}/
+	%body.home
+		%header.head{:role => "banner"}
+			.wrap
+				%h1.logo R Brasil Eventos
+				%nav.nav{:role => "navigation"}
+					%ul.menu
+						%li.menu-item<
+							%a{:href => "sobre.html"} Sobre
+						%li.menu-item<
+							%a{:href => "cases.html"} Cases
+						%li.menu-item<
+							%a{:href => "marcas.html"} Marcas
+						%li.menu-item<
+							%a{:href => "#"} Clientes
+						%li.menu-item<
+							%a{:href => "#"} Contato
+					.social
+						%a.icon.facebook{:href => "#", :target => "_blank"} Facebook
+						%a.icon.instagram{:href => "#", :target => "_blank"} Instagram
+						%a.icon.youtube{:href => "#", :target => "_blank"} Youtube
+		%hr/
+		.jumbotron.cover{:style => "background-image: url(img/welcome.jpg)"}
+			.wrap.row
+				.content
+					%p<
+						%img{:src => "img/logo.png", :alt => "RBrasil Eventos", :width => "268", :height => "106"}/
+					%p Somos especializados em casting para agências de publicidade, comunicação e marketing, atuando em todo o território nacional.
+					%p<
+						%a.btn.green{:href => "#"} Conheça nossa experiência
+				.social
+					%a.icon.facebook{:href => "#", :target => "_blank"} Facebook
+					%a.icon.instagram{:href => "#", :target => "_blank"} Instagram
+					%a.icon.youtube{:href => "#", :target => "_blank"} Youtube
+		%main.main{:role => "main"}
+			.cases.wrap.row
+				%h2.h1 Confira nossos últimos cases de sucesso
+				%ul.cases-list
+					- 6.times do |o|
+						%li.cases-item
+							%a{:href => "#", :style => "background-image: url(http://dummyimage.com/300x300)"}
+								.content
+									%strong Schin
+									Viva a Tubaína!
+				%p.more
+					%span<
+						Nossa experiência vai te surpreender.
+						%br>
+						Um pouco dela você encontrará aqui:
+					%a.btn.green{:href => "#"} Conheça outros cases
+			.features.cover{:style => "background-image: url(img/clouds.jpg)"}
+				.wrap
+					.image
+						%img{:src => "img/women.png", :alt => ""}/
+					.content.row
+						%h2.h2 Requisitos que fazem a diferença na R Brasil Eventos.
+						%ul
+							%li Acompanhamento de todo o trabalho
+							%li Rede de parceiros e colicados
+							%li Vasto banco de dados
+							%li Serviços extras facilitadores
+							%li Equipe treinada para cada segmento
+						%p Também somos homologados na lei 6.019 para trabalhos temporários
+						%p.more<
+							%a.btn.blue{:href => "#"} Descubra outros requisitos
+			.partners.row
+				.wrap
+					%h2.h1 Agências parceiras
+					%ul.partners-list
+						- 5.times do |o|
+							%li.partners-item<
+								%img{:src => "http://dummyimage.com/120x80", :alt => "", :width => "120", :height => "80"}/
+			.location
+				.wrap
+					%h2.h1 Onde nos encontrar
+				.map
+				.content
+					%address.vcard
+						%span.fn.org R Brasil Eventos
+						%br/
+						%span.adr
+							%span.street-address Leandro Dupret, 54
+							\-
+							%br/
+							Vila Clementino -
+							%span.locality São Paulo
+							%span.region SP
+						%br/
+						%br/
+						%span.tel (011) 2308-5158
+						%br/
+						%span.tel (011) 2309-5158
+						%br/
+						%br/
+						%a.email{:href => "mailto:contato@rbrasileventos.com.br"} contato@rbrasileventos.com.br
+					%p<
+						Ou se você preferir,
+						%a.btn.green{:href => "#"} Fale com nosso atendimento
+		%hr/
+		%footer.foot{:role => "contentinfo"}
+			.wrap
+				%address.vcard
+					%span.fn.org R Brasil Eventos
+					%span.adr
+						%span.street-address Leandro Dupret, 54
+						\- Vila Clementino -
+						%span.locality São Paulo
+						\-
+						%span.region SP
+					%br/
+					%span.tel (011) 2308-5158
+					2309-5158
+					%a.email{:href => "mailto:contato@rbrasileventos.com.br"} contato@rbrasileventos.com.br
+				.social
+					%a.icon.facebook{:href => "#", :target => "_blank"} Facebook
+					%a.icon.instagram{:href => "#", :target => "_blank"} Instagram
+					%a.icon.youtube{:href => "#", :target => "_blank"} Youtube
